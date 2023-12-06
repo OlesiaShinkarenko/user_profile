@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_profile/themes/theme.dart';
 import 'package:user_profile/string.dart' show Strings;
+import 'package:user_profile/interest.dart' show Interest;
 
 void main() {
   runApp(const MyApp());
@@ -45,43 +46,19 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       ),
       body: Container(
-        padding: const EdgeInsets.only(left: 16, bottom: 0, right: 16, top: 0),
-        color: Theme.of(context).backgroundColor,
         child: Column(
-          textDirection: TextDirection.ltr,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              Strings.title3,
-              textDirection: TextDirection.ltr,
-              style: Theme.of(context).textTheme.titleMedium,
-              selectionColor: Theme.of(context).scaffoldBackgroundColor,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Text(
-                Strings.description3,
-                textDirection: TextDirection.ltr,
-                style: Theme.of(context).textTheme.bodyMedium,
-                selectionColor: Theme.of(context).hintColor,
-              ),
-            ),
-            Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: Wrap(
-                  spacing: 8.0,
-                  runSpacing: 8.0,
-                  children: categories
-                      .map((category) => Chip(
-                              label: Text(
-                            category,
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          )))
-                      .toList(),
-                ))
+            Interest(
+                categories: categories,
+                title: Strings.title3,
+                description: Strings.description3,
+                padding: const EdgeInsets.only(
+                    left: 16, bottom: 0, right: 16, top: 0))
           ],
         ),
       ),
     );
   }
 }
+
+
