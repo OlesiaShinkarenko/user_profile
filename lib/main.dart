@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:user_profile/personal.dart';
 import 'package:user_profile/themes/theme.dart';
 import 'package:user_profile/string.dart' show Strings;
 import 'package:user_profile/interest.dart' show Interest;
@@ -41,24 +44,62 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Interest(
-                categories: categories,
-                title: Strings.title3,
-                description: Strings.description3,
-                padding: const EdgeInsets.only(
-                    left: 16, bottom: 0, right: 16, top: 0))
-          ],
-        ),
-      ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+          body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            elevation: 6.0,
+            shadowColor:  Theme.of(context).hintColor,
+            expandedHeight: 300.0,
+            flexibleSpace: const Personal(
+                name: Strings.name, image: "assets/images/photo.png"),
+            centerTitle: true,
+            leading: IconButton(
+              onPressed: () {},
+              icon: const ImageIcon(AssetImage("assets/images/del.png")),
+              color: Theme.of(context).primaryColor,
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const ImageIcon(AssetImage("assets/images/logout.png")),
+                color: Theme.of(context).primaryColor,
+              )
+            ],
+            bottom: TabBar(
+              indicatorColor: Theme.of(context).primaryColor,
+              indicatorSize: TabBarIndicatorSize.tab,
+              labelStyle: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(color: Colors.black),
+              unselectedLabelStyle: Theme.of(context)
+                  .textTheme
+                  .titleSmall!
+                  .copyWith(color: Theme.of(context).hintColor),
+              tabs: const [
+                Tab(child: Text(Strings.tab1)),
+                Tab(child: Text(Strings.tab2))
+              ],
+            ),
+          )
+        ],
+      )),
     );
   }
 }
 
-
+/*
+ Column(
+        children: <Widget>[
+          Interest(
+              categories: categories,
+              title: Strings.title3,
+              description: Strings.description3,
+              padding: const EdgeInsets.only(
+                  left: 16, bottom: 0, right: 16, top: 0))
+        ],
+      ),
+ */
