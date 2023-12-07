@@ -7,4 +7,5 @@ abstract class AppColors{
   static const GrayBackgroundColor = const Color(0x14000000);
   static const DividerColor = const Color(0x00FFFFFF);
   static const BackgroundColor = const Color(0xFFFAFAFA);
+  static const WhiteColor = const Color(0xFFFFFFFF);
 }

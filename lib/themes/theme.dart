@@ -13,6 +13,7 @@ ThemeData createTheme() {
       indicatorColor: AppColors.PrimaryColor,
       primaryColor: AppColors.PrimaryColor,
       hintColor: AppColors.GrayTextColor,
-      backgroundColor: AppColors.GrayBackgroundColor,
+      cardColor: AppColors.WhiteColor,
+      secondaryHeaderColor: AppColors.BlackTextColor,
       chipTheme: const ChipThemeData(backgroundColor: AppColors.GrayBackgroundColor));
 }
