@@ -2,15 +2,16 @@
 
 A new Flutter project.
 
-## Getting Started
+## Description
 
-This project is a starting point for a Flutter application.
+This project contains the UI of the user profile screen. Appbar and tabbar are implemented (tab settings has a blank screen). In the list of interests, you can select interests (the selected ones are highlighted in green).
 
-A few resources to get you started if this is your first Flutter project:
+##Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+|                                                            Start screen                                                             |                                                             End screen                                                              |
+|:---------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------:|
+| <img src="https://github.com/OlesiaShinkarenko/user_profile/assets/103891397/d12353d3-ac44-42e9-8c49-d225644ba728" width=50% height=50%> | <img src="https://github.com/OlesiaShinkarenko/user_profile/assets/103891397/256c2593-87bf-490e-a2d4-cbdae05ebd58" width=50% height=50%> |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+
