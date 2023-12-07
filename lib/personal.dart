@@ -9,17 +9,13 @@ class Personal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 60),
-      child: Center(
-          child: Column(
-        children: [
-          Image(
-            image: AssetImage(image),
-          ),
-          Text(name, style: Theme.of(context).textTheme.titleLarge)
-        ],
-      )),
+    return FlexibleSpaceBar(
+      title: Text(name, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
+      background: Image(
+        image: AssetImage(image),
+      ),
+      centerTitle: true,
+      collapseMode: CollapseMode.pin,
     );
   }
 }

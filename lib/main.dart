@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:user_profile/limit.dart';
 import 'package:user_profile/personal.dart';
@@ -53,12 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                elevation: 6.0,
+                expandedHeight: 250.0,
+                centerTitle: true,
                 shadowColor: Theme.of(context).hintColor,
-                expandedHeight: 300.0,
                 flexibleSpace: const Personal(
                     name: Strings.name, image: "assets/images/photo.png"),
-                centerTitle: true,
                 leading: IconButton(
                   onPressed: () {},
                   icon: const ImageIcon(AssetImage("assets/images/del.png")),
@@ -72,7 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Theme.of(context).primaryColor,
                   )
                 ],
-                bottom: TabBar(
+              ),
+              SliverPersistentHeader(
+                  delegate: _SliverAppBarDelegate(
+                TabBar(
                   indicatorColor: Theme.of(context).primaryColor,
                   indicatorSize: TabBarIndicatorSize.tab,
                   labelStyle: Theme.of(context)
@@ -88,22 +88,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     Tab(child: Text(Strings.tab2))
                   ],
                 ),
-              ),
+              )),
             ];
           },
           body: TabBarView(
             children: <Widget>[
               SingleChildScrollView(
-                child:  Padding(
-                  padding:
-                  EdgeInsets.only(top: 30, bottom: 32),
+                child: Padding(
+                  padding: EdgeInsets.only(top: 30, bottom: 32),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SubscribeView(
                         title: Strings.title1,
                         description: Strings.description1,
-                        padding: EdgeInsets.only(left: 16, bottom: 0, right: 16),
+                        padding:
+                            EdgeInsets.only(left: 16, bottom: 0, right: 16),
                         subscribes: [
                           Subscribe(
                               name: Strings.cardtitle1,
@@ -132,7 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               image: "assets/images/info.png"),
                         ],
                         title: Strings.title2,
-                        padding: const EdgeInsets.only(top: 46,left: 16, bottom: 0),
+                        padding:
+                            const EdgeInsets.only(top: 46, left: 16, bottom: 0),
                         description: Strings.description2,
                       ),
                       Interest(
@@ -144,10 +145,34 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-
-              Icon(Icons.directions_transit, size: 350),
+              Column()
             ],
           ),
         )));
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate(this._tabBar);
+
+  final TabBar _tabBar;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height;
+
+  @override
+  double get maxExtent => _tabBar.preferredSize.height;
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new Container(
+      child: _tabBar,
+    );
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return false;
   }
 }
