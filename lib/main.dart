@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:user_profile/limit.dart';
 import 'package:user_profile/personal.dart';
 import 'package:user_profile/subscribe.dart';
 import 'package:user_profile/themes/theme.dart';
@@ -92,34 +93,58 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           body: TabBarView(
             children: <Widget>[
-              Column(
-                children: [
-                  SubscribeView(
-                    title: Strings.title1,
-                    description: Strings.description1,
-                    padding: EdgeInsets.only(
-                        left: 16, bottom: 0, right: 16, top: 30),
-                    subscribes: [
-                      Subscribe(
-                          name: Strings.cardtitle1,
-                          image: "assets/images/sber.png",
-                          condition: Strings.carddesciption1,
-                          cost: Strings.cardcost1),
-                      Subscribe(
-                          name: Strings.cardtitle2,
-                          image: "assets/images/percent_fill.png",
-                          condition: Strings.carddesciption2,
-                          cost: Strings.cardcost1),
+              SingleChildScrollView(
+                child:  Padding(
+                  padding:
+                  EdgeInsets.only(top: 30, bottom: 32),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SubscribeView(
+                        title: Strings.title1,
+                        description: Strings.description1,
+                        padding: EdgeInsets.only(left: 16, bottom: 0, right: 16),
+                        subscribes: [
+                          Subscribe(
+                              name: Strings.cardtitle1,
+                              image: "assets/images/sber.png",
+                              condition: Strings.carddesciption1,
+                              cost: Strings.cardcost1),
+                          Subscribe(
+                              name: Strings.cardtitle2,
+                              image: "assets/images/percent_fill.png",
+                              condition: Strings.carddesciption2,
+                              cost: Strings.cardcost1),
+                        ],
+                      ),
+                      limitView(
+                        tarifs: [
+                          Tarifs(
+                              name: Strings.tarif1,
+                              image: "assets/images/limit.png",
+                              description: Strings.tarifdescription1),
+                          Tarifs(
+                              name: Strings.tarif2,
+                              image: "assets/images/percent.png",
+                              description: Strings.tarifdescription2),
+                          Tarifs(
+                              name: Strings.tarif3,
+                              image: "assets/images/info.png"),
+                        ],
+                        title: Strings.title2,
+                        padding: const EdgeInsets.only(top: 46,left: 16, bottom: 0),
+                        description: Strings.description2,
+                      ),
+                      Interest(
+                          categories: categories,
+                          title: Strings.title3,
+                          description: Strings.description3,
+                          padding: const EdgeInsets.only(top: 46, left: 16)),
                     ],
                   ),
-                  Interest(
-                      categories: categories,
-                      title: Strings.title3,
-                      description: Strings.description3,
-                      padding: const EdgeInsets.only(
-                          left: 16, bottom: 0, right: 16, top: 46)),
-                ],
+                ),
               ),
+
               Icon(Icons.directions_transit, size: 350),
             ],
           ),
